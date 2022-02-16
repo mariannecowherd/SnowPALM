@@ -12,12 +12,16 @@ function get_prism_corrected_nldas(Domain,StartMonth,StartYear,EndMonth,EndYear)
 % get_prism_corrected_nldas('CO_NM',1,2013,12,2013)
 
 NLDASDataLoc = 'https://hydro1.gesdisc.eosdis.nasa.gov/data/NLDAS/NLDAS_FORA0125_H.002';
-NLDASUsername = 'YOURUSERNAME';
-NLDASPassword = 'YOURPASSWORD';
+
+
+NLDASUsername = 'cowherd';
+
+
+NLDASPassword = 'Iwannaknow1';
 PRISMDataLoc = 'ftp://prism.nacse.org/monthly';
 
 prism_ppt_version = '3';            % Version of PRISM Precipitation data                   
-prism_tmean_version = '2';          % Version of PRISM Temperature data
+prism_tmean_version = '3';          % Version of PRISM Temperature data
 
 name = ['prism_corrected_nldas_' Domain];               % Name of ouput forcing directory
 [ulx,uly,lrx,lry,outdir,demfile] = domains(Domain);     % Get information about the domains
