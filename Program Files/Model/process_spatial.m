@@ -46,13 +46,13 @@ if ~exist(nodatafile,'file')
             tmpshpdir = tempname;
             mkdir(tmpshpdir);
             evalc(['!ogr2ogr -t_srs "' Info.Proj4String '" -dim 2 -clipdst ' xmin ' ' ymin ' ' xmax ' ' ymax ' "' fullfile(tmpshpdir,'tmp.shp') '" "' Info.ExtentFile '"']);
-            S = shapeinfo_sp([Info.ProgramFilesDir '/python'],fullfile(tmpshpdir,'tmp.shp'));
+            S = shapeinfo_sp([Info.ProgramFilesDir '/Python'],fullfile(tmpshpdir,'tmp.shp'));
             z = double(imread(ofname));
             if (S.BoundingBox(1)) < 1E30
                 evalc(['!gdal_rasterize -ot Byte -init 0 -burn 1 -tr ' tr ' ' tr ' -te ' xmin ' ' ymin ' ' xmax ' ' ymax ' "' fullfile(tmpshpdir,'tmp.shp') '" "' ofname2 '"']);
             else
                 imwrite2tif(zeros(size(z)),[],ofname2,'single');
-                evalc(['!python "' Info.ProgramFilesDir '/python/gdalcopyproj.py" "' ofname '" "' ofname2 '"']);
+                evalc(['!python "' Info.ProgramFilesDir '/Python/gdalcopyproj.py" "' ofname '" "' ofname2 '"']);
             end
             rmdir(tmpshpdir,'s')
         end
@@ -62,7 +62,7 @@ if ~exist(nodatafile,'file')
     % Instead of geotiffinfo, use a simple function which provides the
     % relavent info without the mapping toolbox
 %     geo = geotiffinfo(ofname);
-    geo = geotiffinfo_sp([Info.ProgramFilesDir '/python'],ofname);
+    geo = geotiffinfo_sp([Info.ProgramFilesDir '/Python'],ofname);
     
     SpatialData.z = z_0;
     if exist(ofname2,'file');
