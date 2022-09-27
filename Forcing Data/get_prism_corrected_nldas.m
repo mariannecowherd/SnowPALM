@@ -14,10 +14,10 @@ function get_prism_corrected_nldas(Domain,StartMonth,StartYear,EndMonth,EndYear)
 NLDASDataLoc = 'https://hydro1.gesdisc.eosdis.nasa.gov/data/NLDAS/NLDAS_FORA0125_H.002';
 
 
-NLDASUsername = 'cowherd';
+NLDASUsername = '';
 
 
-NLDASPassword = 'Iwannaknow1';
+NLDASPassword = '';
 PRISMDataLoc = 'ftp://prism.nacse.org/monthly';
 
 prism_ppt_version = '3';            % Version of PRISM Precipitation data                   
